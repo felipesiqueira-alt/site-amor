@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Nós Dois</title>
+<style>
+body {
+    background: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 30px;
+}
+img {
+    width: 260px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+#contador {
+    margin-top: 25px;
+    font-size: 20px;
+    line-height: 1.6;
+}
+</style>
+</head>
+<body>
+
+<h1>Nosso Amor 💖</h1>
+
+<img src="foto.jpg">
+
+<p style="font-size:18px;margin-top:20px;">
+Cada dia ao seu lado é o meu favorito.
+</p>
+
+<div id="contador"></div>
+
+<p style="margin-top:25px;">
+🎵 Música: <a href="https://www.youtube.com/watch?v=TW9d8vYrVFQ" target="_blank" style="color:#ff69b4;">
+Deixa Eu Te Amar - Édson & Hudson
+</a>
+</p>
+
+<script>
+function atualizarContador() {
+    let inicio = new Date("2022-01-09 00:00:00");
+    let agora = new Date();
+    let diffMs = agora - inicio;
+
+    let anos = agora.getFullYear() - inicio.getFullYear();
+    let meses = agora.getMonth() - inicio.getMonth();
+    let dias = agora.getDate() - inicio.getDate();
+
+    if (dias < 0) {
+        meses -= 1;
+        dias += new Date(agora.getFullYear(), agora.getMonth(), 0).getDate();
+    }
+    if (meses < 0) {
+        anos -= 1;
+        meses += 12;
+    }
+
+    let semanas = Math.floor(diffMs / (1000 * 60 * 60 * 24 * 7));
+    let totalDias = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    let horas = Math.floor(diffMs / (1000 * 60 * 60));
+
+    document.getElementById("contador").innerHTML =
+        anos + " anos<br>" +
+        meses + " meses<br>" +
+        semanas + " semanas<br>" +
+        totalDias + " dias<br>" +
+        horas + " horas";
+}
+setInterval(atualizarContador, 1000);
+atualizarContador();
+</script>
+
+</body>
+</html>
